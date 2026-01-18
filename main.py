@@ -27,6 +27,12 @@ class PlagiarismEngine:
         }
     
     def extract_text_from_docx(self, filepath: str) -> str:
+        try:
+            from docx import Document
+            doc = Document(filepath)
+            return '\n'.join([p.text for p in doc.paragraphs if p.text.strip()])
+        except ImportError:
+            import zipfile
         
     
     def extract_text_from_pdf(self, filepath: str) -> str:
