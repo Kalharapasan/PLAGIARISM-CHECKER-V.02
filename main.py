@@ -453,6 +453,22 @@ class PlagiarismCheckerApp:
         else:
             report.append("✗ HIGH SIMILARITY - Significant concern")
         report.append("")
+        if self.results['matches']:
+            report.append("DETAILED MATCHES")
+            report.append("-" * 70)
+            for idx, match in enumerate(self.results['matches'], 1):
+                report.append(f"\nMatch #{idx}")
+                report.append(f"Source: {match['source']}")
+                report.append(f"URL: {match['url']}")
+                report.append(f"Similarity: {match['similarity']}%")
+                
+                if match['matched_sequences']:
+                    report.append("\nMatched Sequences:")
+                    for seq in match['matched_sequences']:
+                        report.append(f"• \"{seq['text'][:100]}...\" ({seq['length']} words)")
+                report.append("-" * 70)
+        
+        report.append("\n" + "=" * 70)
 
 
 def main():
