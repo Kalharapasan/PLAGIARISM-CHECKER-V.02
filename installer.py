@@ -81,6 +81,9 @@ def install_dependencies():
     return installed, failed
 
 def create_desktop_shortcut():
+    print("Creating shortcuts...")
+    system = platform.system()
+    script_dir = os.path.dirname(os.path.abspath(__file__))
 
 
 if __name__ == "__main__":
