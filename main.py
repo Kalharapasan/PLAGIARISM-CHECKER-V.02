@@ -356,6 +356,8 @@ class PlagiarismCheckerApp:
             self.root.after(0, lambda: self.check_button.config(state='normal', text="🔍 Check for Plagiarism"))
 
     def display_results(self):
+        if not self.results:
+            return
 
 
 def main():
