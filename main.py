@@ -296,7 +296,26 @@ class PlagiarismCheckerApp:
         self.status_bar = tk.Label(self.root, text="Ready", bd=1, relief='sunken', 
                                   anchor='w', bg='#e2e8f0', font=('Arial', 9))
         self.status_bar.pack(side='bottom', fill='x')
+    
+    def select_file(self):
+        filetypes = [
+            ('All Supported', '*.txt *.docx *.pdf'),
+            ('Text Files', '*.txt'),
+            ('Word Documents', '*.docx'),
+            ('PDF Files', '*.pdf'),
+            ('All Files', '*.*')
+        ]
         
+        filename = filedialog.askopenfilename(
+            title="Select Document",
+            filetypes=filetypes
+        )
+        
+        if filename:
+            self.current_file = filename
+            self.file_label.config(text=f"📎 {Path(filename).name}")
+            self.text_input.delete(1.0, tk.END)  # Clear text input
+            self.status_bar.config(text=f"File selected: {Path(filename).name}")
         
     
 
