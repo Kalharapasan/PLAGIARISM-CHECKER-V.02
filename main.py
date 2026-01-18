@@ -196,7 +196,18 @@ class PlagiarismCheckerApp:
         self.results = None
         self.create_ui()
     
-    def setup_styles(self):    
+    def setup_styles(self):
+        style = ttk.Style()
+        style.theme_use('clam') 
+        style.configure('Title.TLabel', font=('Arial', 24, 'bold'), 
+                       background='#667eea', foreground='white')
+        style.configure('Subtitle.TLabel', font=('Arial', 10), 
+                       background='#667eea', foreground='white')
+        style.configure('Header.TLabel', font=('Arial', 12, 'bold'), 
+                       background='#f0f0f0')
+        style.configure('Info.TLabel', font=('Arial', 10), 
+                       background='#f0f0f0')
+        style.configure('Primary.TButton', font=('Arial', 11, 'bold'))  
     
 
 def main():
