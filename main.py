@@ -26,6 +26,25 @@ class PlagiarismEngine:
             'very', 's', 't', 'just', 'now'
         }
     
+    def calculate_cosine_similarity(self, text1: str, text2: str) -> float:
+        words1 = self.tokenize(text1)
+        words2 = self.tokenize(text2)
+        
+        freq1 = Counter(words1)
+        freq2 = Counter(words2)
+        
+        all_words = set(freq1.keys()).union(set(freq2.keys()))
+        vec1 = [freq1.get(word, 0) for word in all_words]
+        vec2 = [freq2.get(word, 0) for word in all_words]
+        
+        dot_product = sum(v1 * v2 for v1, v2 in zip(vec1, vec2))
+        magnitude1 = math.sqrt(sum(v ** 2 for v in vec1))
+        magnitude2 = math.sqrt(sum(v ** 2 for v in vec2))
+        
+        if magnitude1 == 0 or magnitude2 == 0:
+            return 0.0
+        return (dot_product / (magnitude1 * magnitude2)) * 100
+    
     def find_common_sequences(self, text1: str, text2: str) -> List[Dict]:
         words1 = self.tokenize(text1)
         words2 = self.tokenize(text2)
