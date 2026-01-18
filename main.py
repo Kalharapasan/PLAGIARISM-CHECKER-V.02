@@ -218,6 +218,8 @@ class PlagiarismCheckerApp:
                  style='Title.TLabel').pack(pady=(15, 5))
         ttk.Label(header_frame, text="Advanced similarity detection for academic integrity", 
                  style='Subtitle.TLabel').pack()
+        main_container = tk.Frame(self.root, bg='#f0f0f0')
+        main_container.pack(fill='both', expand=True, padx=20, pady=10)
     
 
 def main():
