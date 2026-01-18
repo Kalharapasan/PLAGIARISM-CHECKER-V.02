@@ -182,6 +182,8 @@ def get_sample_database() -> List[Dict]:
     ]
 
 
+class PlagiarismCheckerApp:
+
 def main():
     root = tk.Tk()
     app = PlagiarismCheckerApp(root)
