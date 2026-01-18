@@ -104,7 +104,7 @@ def create_desktop_shortcut():
             return True
         except:
             print("⚠ Could not create desktop shortcut")
-            print("  You can manually create a shortcut to run_plagiarism_checker.bat")
+            print("  You can manually create a shortcut to run.bat")
             return False
     elif system == "Linux":
         try:
@@ -134,6 +134,8 @@ Categories=Education;Office;
         return False
     
     return False
+
+
 
 
 if __name__ == "__main__":
