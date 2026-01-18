@@ -242,6 +242,8 @@ class PlagiarismCheckerApp:
                   command=self.select_file).pack(side='left', padx=5)
         ttk.Button(button_frame, text="🗑️ Clear", 
                   command=self.clear_file).pack(side='left', padx=5)
+        ttk.Label(upload_frame, text="Supported: DOCX, PDF, TXT", 
+                 style='Info.TLabel', foreground='gray').pack(pady=(10, 0))
         
     
 
