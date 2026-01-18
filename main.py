@@ -344,6 +344,8 @@ class PlagiarismCheckerApp:
         thread = threading.Thread(target=self.perform_check)
         thread.daemon = True
         thread.start()
+    
+    def perform_check(self):
         
 
 def main():
