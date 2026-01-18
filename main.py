@@ -209,6 +209,8 @@ class PlagiarismCheckerApp:
                        background='#f0f0f0')
         style.configure('Primary.TButton', font=('Arial', 11, 'bold'))  
     
+    def create_ui(self):
+    
 
 def main():
     root = tk.Tk()
