@@ -360,6 +360,18 @@ class PlagiarismCheckerApp:
             return
         score = self.results['overall_similarity']
         self.score_label.config(text=f"{score}%")
+        if score < 15:
+            color = '#48bb78'  # Green
+            desc = "Low Similarity - Acceptable"
+        elif score < 30:
+            color = '#ed8936'  # Orange
+            desc = "Moderate Similarity - Review Needed"
+        else:
+            color = '#f56565'  # Red
+            desc = "High Similarity - Significant Concern"
+        
+        self.score_label.config(fg=color)
+        self.score_desc.config(text=desc, foreground=color)
 
 
 def main():
