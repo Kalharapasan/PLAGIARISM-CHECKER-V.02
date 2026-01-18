@@ -191,6 +191,9 @@ class PlagiarismCheckerApp:
         self.setup_styles()
         self.engine = PlagiarismEngine()
         self.database = get_sample_database()
+        self.current_file = None
+        self.current_text = None
+        self.results = None
 
 def main():
     root = tk.Tk()
