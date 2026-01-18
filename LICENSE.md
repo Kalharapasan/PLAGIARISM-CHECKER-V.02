@@ -1,6 +1,6 @@
 # License – Proprietary Use, Permission Required
 
-**Copyright © 2025 Kalhara Pasan**
+**Copyright © 2026 Kalhara Pasan**
 
 All rights reserved.
 
