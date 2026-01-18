@@ -84,6 +84,28 @@ def create_desktop_shortcut():
     print("Creating shortcuts...")
     system = platform.system()
     script_dir = os.path.dirname(os.path.abspath(__file__))
+    if system == "Windows":
+        try:
+            import winshell
+            from win32com.client import Dispatch
+            
+            desktop = winshell.desktop()
+            path = os.path.join(desktop, "Plagiarism Checker.lnk")
+            target = os.path.join(script_dir, "run_plagiarism_checker.bat")
+            
+            shell = Dispatch('WScript.Shell')
+            shortcut = shell.CreateShortCut(path)
+            shortcut.Targetpath = target
+            shortcut.WorkingDirectory = script_dir
+            shortcut.IconLocation = target
+            shortcut.save()
+            
+            print("✓ Desktop shortcut created")
+            return True
+        except:
+            print("⚠ Could not create desktop shortcut")
+            print("  You can manually create a shortcut to run_plagiarism_checker.bat")
+            return False
 
 
 if __name__ == "__main__":
