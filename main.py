@@ -26,6 +26,9 @@ class PlagiarismEngine:
             'very', 's', 't', 'just', 'now'
         }
     
+    def extract_text_from_docx(self, filepath: str) -> str:
+        
+    
     def extract_text_from_pdf(self, filepath: str) -> str:
         try:
             import pdfplumber
