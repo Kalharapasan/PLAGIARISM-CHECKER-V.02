@@ -443,6 +443,16 @@ class PlagiarismCheckerApp:
         report.append(f"Total Words Analyzed: {self.results['total_words']}")
         report.append(f"Number of Sources Matched: {len(self.results['matches'])}")
         report.append("")
+        score = self.results['overall_similarity']
+        report.append("INTERPRETATION")
+        report.append("-" * 70)
+        if score < 15:
+            report.append("✓ LOW SIMILARITY - Acceptable level for academic work")
+        elif score < 30:
+            report.append("⚠ MODERATE SIMILARITY - Review recommended")
+        else:
+            report.append("✗ HIGH SIMILARITY - Significant concern")
+        report.append("")
 
 
 def main():
