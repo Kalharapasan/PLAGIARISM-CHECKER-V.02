@@ -25,3 +25,33 @@ class PlagiarismEngine:
             'some', 'any', 'no', 'not', 'only', 'own', 'same', 'so', 'than', 'too',
             'very', 's', 't', 'just', 'now'
         }
+    
+    def check_plagiarism(self, text: str, database: List[Dict]) -> Dict:
+        results = {
+            'overall_similarity': 0,
+            'total_words': len(self.tokenize(text)),
+            'matches': []
+        }
+        
+        for doc in database:
+            doc_text = doc.get('text', '')
+            similarity = self.calculate_cosine_similarity(text, doc_text)
+            
+            if similarity > 5:
+                sequences = self.find_common_sequences(text, doc_text)
+                results['matches'].append({
+                    'source': doc.get('source', 'Unknown'),
+                    'url': doc.get('url', ''),
+                    'similarity': round(similarity, 2),
+                    'matched_sequences': sequences[:5]
+                })
+        
+        if results['matches']:
+            total_weight = sum(m['similarity'] for m in results['matches'])
+            weighted_sum = sum(m['similarity'] ** 2 for m in results['matches'])
+            results['overall_similarity'] = round(
+                weighted_sum / total_weight if total_weight > 0 else 0, 2
+            )
+        
+        results['matches'].sort(key=lambda x: x['similarity'], reverse=True)
+        return results
