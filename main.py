@@ -194,6 +194,7 @@ class PlagiarismCheckerApp:
         self.current_file = None
         self.current_text = None
         self.results = None
+        self.create_ui()
 
 def main():
     root = tk.Tk()
