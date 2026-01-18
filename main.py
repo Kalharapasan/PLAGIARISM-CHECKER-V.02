@@ -26,6 +26,10 @@ class PlagiarismEngine:
             'very', 's', 't', 'just', 'now'
         }
     
+    def extract_text_from_txt(self, filepath: str) -> str:
+        with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+            return f.read()
+    
     def extract_text_from_docx(self, filepath: str) -> str:
         try:
             from docx import Document
