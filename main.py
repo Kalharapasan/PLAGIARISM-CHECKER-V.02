@@ -244,6 +244,12 @@ class PlagiarismCheckerApp:
                   command=self.clear_file).pack(side='left', padx=5)
         ttk.Label(upload_frame, text="Supported: DOCX, PDF, TXT", 
                  style='Info.TLabel', foreground='gray').pack(pady=(10, 0))
+        ttk.Label(left_frame, text="Or paste text directly:", 
+                 style='Info.TLabel', background='white').pack(padx=15, pady=(10, 5), anchor='w')
+        
+        self.text_input = scrolledtext.ScrolledText(left_frame, height=15, 
+                                                    font=('Arial', 10), wrap='word')
+        self.text_input.pack(fill='both', expand=True, padx=15, pady=(0, 15))
         
     
 
