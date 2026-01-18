@@ -145,3 +145,38 @@ class PlagiarismEngine:
         
         results['matches'].sort(key=lambda x: x['similarity'], reverse=True)
         return results
+
+def get_sample_database() -> List[Dict]:
+    return [
+        {
+            'source': 'Wikipedia - Academic Integrity',
+            'url': 'https://en.wikipedia.org/wiki/Academic_integrity',
+            'text': '''Academic integrity is the moral code or ethical policy of academia. 
+            It includes values such as avoidance of cheating or plagiarism, maintenance of 
+            academic standards, and honesty and rigor in research and academic publishing.'''
+        },
+        {
+            'source': 'Educational Research Journal',
+            'url': 'https://example.com/research/plagiarism',
+            'text': '''Plagiarism is the representation of another author's language, thoughts, 
+            ideas, or expressions as one's own original work. Students must understand proper attribution.'''
+        },
+        {
+            'source': 'University Writing Guide',
+            'url': 'https://example.com/writing-guide',
+            'text': '''When students use someone else's ideas or words, they must give credit 
+            to the original source. Failure to cite sources properly is considered plagiarism.'''
+        },
+        {
+            'source': 'Research Ethics Handbook',
+            'url': 'https://example.com/ethics',
+            'text': '''Original research demonstrates critical thinking and deep understanding 
+            of the subject matter. Students should develop their own ideas and arguments.'''
+        },
+        {
+            'source': 'Academic Standards Guide',
+            'url': 'https://example.com/standards',
+            'text': '''Teachers take academic integrity seriously because it ensures students 
+            are held to high ethical standards and that their work is trustworthy and credible.'''
+        }
+    ]
