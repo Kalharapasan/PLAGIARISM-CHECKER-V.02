@@ -419,6 +419,8 @@ class PlagiarismCheckerApp:
         self.status_bar.config(text=f"Analysis complete - {score}% similarity detected")
     
     def export_report(self):
+        if not self.results:
+            return
         
 
 
