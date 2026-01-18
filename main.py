@@ -222,6 +222,12 @@ class PlagiarismCheckerApp:
         main_container.pack(fill='both', expand=True, padx=20, pady=10)
         left_frame = tk.Frame(main_container, bg='white', relief='raised', bd=1)
         left_frame.pack(side='left', fill='both', expand=True, padx=(0, 10))
+        input_header = tk.Frame(left_frame, bg='#f7fafc', height=50)
+        input_header.pack(fill='x')
+        input_header.pack_propagate(False)
+        
+        ttk.Label(input_header, text="📄 Document Input", 
+                 style='Header.TLabel', background='#f7fafc').pack(pady=15, padx=15, anchor='w')
         
     
 
