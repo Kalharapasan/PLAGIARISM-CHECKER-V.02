@@ -372,6 +372,23 @@ class PlagiarismCheckerApp:
         
         self.score_label.config(fg=color)
         self.score_desc.config(text=desc, foreground=color)
+        for widget in self.stats_frame.winfo_children():
+            widget.destroy()
+        
+        stats = [
+            ("Total Words", self.results['total_words']),
+            ("Sources Found", len(self.results['matches'])),
+            ("Unique Content", f"{max(0, 100 - score):.1f}%")
+        ]
+        
+        for i, (label, value) in enumerate(stats):
+            stat_box = tk.Frame(self.stats_frame, bg='white', relief='solid', bd=1)
+            stat_box.pack(side='left', expand=True, fill='both', padx=5, pady=5)
+            
+            tk.Label(stat_box, text=str(value), font=('Arial', 16, 'bold'),
+                    bg='white', fg='#667eea').pack(pady=(10, 0))
+            tk.Label(stat_box, text=label, font=('Arial', 8),
+                    bg='white', fg='#718096').pack(pady=(0, 10))
 
 
 def main():
