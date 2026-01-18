@@ -11,3 +11,5 @@ from collections import Counter
 import difflib
 import threading
 from datetime import datetime
+
+class PlagiarismEngine:
