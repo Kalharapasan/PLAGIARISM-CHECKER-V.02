@@ -322,7 +322,7 @@ class PlagiarismCheckerApp:
         self.file_label.config(text="No file selected")
         self.status_bar.config(text="Ready")
         
-    
+    def run_check(self):
 
 def main():
     root = tk.Tk()
