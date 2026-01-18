@@ -323,6 +323,22 @@ class PlagiarismCheckerApp:
         self.status_bar.config(text="Ready")
         
     def run_check(self):
+        if self.current_file:
+            self.status_bar.config(text="Extracting text from file...")
+            try:
+                text = self.engine.extract_text(self.current_file)
+            except Exception as e:
+                messagebox.showerror("Error", f"Failed to read file: {str(e)}")
+                self.status_bar.config(text="Error reading file")
+                return
+        else:
+            text = self.text_input.get(1.0, tk.END).strip()
+        
+        if not text or len(text) < 50:
+            messagebox.showwarning("Warning", "Please provide a document or text (minimum 50 characters)")
+            return
+        
+        self.current_text = text
 
 def main():
     root = tk.Tk()
