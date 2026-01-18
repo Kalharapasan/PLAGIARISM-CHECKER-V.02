@@ -25,6 +25,9 @@ class PlagiarismEngine:
             'some', 'any', 'no', 'not', 'only', 'own', 'same', 'so', 'than', 'too',
             'very', 's', 't', 'just', 'now'
         }
+        
+    def tokenize(self, text: str) -> List[str]:
+        return re.findall(r'\b[a-z0-9]+\b', text.lower())
     
     def calculate_cosine_similarity(self, text1: str, text2: str) -> float:
         words1 = self.tokenize(text1)
