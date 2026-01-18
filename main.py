@@ -293,6 +293,9 @@ class PlagiarismCheckerApp:
                                       state='disabled', activebackground='#5a67d8',
                                       activeforeground='white')
         self.export_button.pack(fill='x', padx=15, pady=(0, 15))
+        self.status_bar = tk.Label(self.root, text="Ready", bd=1, relief='sunken', 
+                                  anchor='w', bg='#e2e8f0', font=('Arial', 9))
+        self.status_bar.pack(side='bottom', fill='x')
         
         
     
