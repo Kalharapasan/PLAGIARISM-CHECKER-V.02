@@ -346,7 +346,11 @@ class PlagiarismCheckerApp:
         thread.start()
     
     def perform_check(self):
+        try:
         
+        except Exception as e:
+            self.root.after(0, lambda: messagebox.showerror("Error", f"Analysis failed: {str(e)}"))
+            self.root.after(0, lambda: self.check_button.config(state='normal', text="🔍 Check for Plagiarism"))
 
 def main():
     root = tk.Tk()
