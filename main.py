@@ -284,6 +284,9 @@ class PlagiarismCheckerApp:
                                                      font=('Arial', 9), wrap='word',
                                                      state='disabled')
         self.results_text.pack(fill='both', expand=True, padx=15, pady=(0, 15))
+        self.results_text.tag_config('header', font=('Arial', 10, 'bold'), foreground='#2d3748')
+        self.results_text.tag_config('source', font=('Arial', 9, 'bold'), foreground='#667eea')
+        self.results_text.tag_config('match', background='#fef5e7', foreground='#c53030')
         
         
     
