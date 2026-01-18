@@ -277,6 +277,13 @@ class PlagiarismCheckerApp:
         self.score_desc.pack()
         self.stats_frame = tk.Frame(right_frame, bg='#f7fafc')
         self.stats_frame.pack(fill='x', padx=15, pady=10)
+        ttk.Label(right_frame, text="Detailed Matches:", 
+                 style='Info.TLabel', background='white').pack(padx=15, pady=(10, 5), anchor='w')
+        
+        self.results_text = scrolledtext.ScrolledText(right_frame, height=15, 
+                                                     font=('Arial', 9), wrap='word',
+                                                     state='disabled')
+        self.results_text.pack(fill='both', expand=True, padx=15, pady=(0, 15))
         
         
     
