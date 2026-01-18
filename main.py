@@ -469,6 +469,13 @@ class PlagiarismCheckerApp:
                 report.append("-" * 70)
         
         report.append("\n" + "=" * 70)
+        try:
+            with open(filename, 'w', encoding='utf-8') as f:
+                f.write('\n'.join(report))
+            messagebox.showinfo("Success", f"Report exported successfully!\n\n{filename}")
+            self.status_bar.config(text=f"Report exported to {Path(filename).name}")
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to export report: {str(e)}")
 
 
 def main():
