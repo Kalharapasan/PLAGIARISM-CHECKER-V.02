@@ -189,6 +189,8 @@ class PlagiarismCheckerApp:
         self.root.geometry("1000x700")
         self.root.configure(bg='#f0f0f0')
         self.setup_styles()
+        self.engine = PlagiarismEngine()
+        self.database = get_sample_database()
 
 def main():
     root = tk.Tk()
