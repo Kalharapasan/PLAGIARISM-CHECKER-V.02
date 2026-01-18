@@ -429,6 +429,20 @@ class PlagiarismCheckerApp:
         
         if not filename:
             return
+        
+        report = []
+        report.append("=" * 70)
+        report.append("PLAGIARISM DETECTION REPORT")
+        report.append("=" * 70)
+        report.append(f"\nGenerated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        report.append(f"Document: {Path(self.current_file).name if self.current_file else 'Pasted Text'}")
+        report.append("")
+        report.append("SUMMARY")
+        report.append("-" * 70)
+        report.append(f"Overall Similarity Score: {self.results['overall_similarity']}%")
+        report.append(f"Total Words Analyzed: {self.results['total_words']}")
+        report.append(f"Number of Sources Matched: {len(self.results['matches'])}")
+        report.append("")
 
 
 def main():
