@@ -26,6 +26,24 @@ class PlagiarismEngine:
             'very', 's', 't', 'just', 'now'
         }
     
+    def find_common_sequences(self, text1: str, text2: str) -> List[Dict]:
+        words1 = self.tokenize(text1)
+        words2 = self.tokenize(text2)
+        
+        matcher = difflib.SequenceMatcher(None, words1, words2)
+        matches = []
+        
+        for match in matcher.get_matching_blocks():
+            if match.size >= self.min_match_length:
+                matched_text = ' '.join(words1[match.a:match.a + match.size])
+                matches.append({
+                    'text': matched_text,
+                    'length': match.size,
+                    'position': match.a
+                })
+        
+        return matches
+    
     def check_plagiarism(self, text: str, database: List[Dict]) -> Dict:
         results = {
             'overall_similarity': 0,
