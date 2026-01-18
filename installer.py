@@ -80,6 +80,9 @@ def install_dependencies():
     print()
     return installed, failed
 
+def create_desktop_shortcut():
+
+
 if __name__ == "__main__":
     try:
         main()
