@@ -263,6 +263,18 @@ class PlagiarismCheckerApp:
         
         ttk.Label(results_header, text="📊 Analysis Results", 
                  style='Header.TLabel', background='#f7fafc').pack(pady=15, padx=15, anchor='w')
+        self.score_frame = tk.Frame(right_frame, bg='white', height=150)
+        self.score_frame.pack(fill='x', pady=20)
+        self.score_frame.pack_propagate(False)
+        
+        self.score_label = tk.Label(self.score_frame, text="--", 
+                                    font=('Arial', 48, 'bold'), bg='white', fg='#718096')
+        self.score_label.pack(pady=10)
+        
+        self.score_desc = ttk.Label(self.score_frame, text="Upload a document to begin", 
+                                   style='Info.TLabel', background='white', 
+                                   foreground='#718096')
+        self.score_desc.pack()
         
     
 
