@@ -180,3 +180,16 @@ def get_sample_database() -> List[Dict]:
             are held to high ethical standards and that their work is trustworthy and credible.'''
         }
     ]
+
+
+def main():
+    root = tk.Tk()
+    app = PlagiarismCheckerApp(root)
+    
+    
+    
+    root.mainloop()
+
+
+if __name__ == "__main__":
+    main()
