@@ -421,7 +421,14 @@ class PlagiarismCheckerApp:
     def export_report(self):
         if not self.results:
             return
+        filename = filedialog.asksaveasfilename(
+            defaultextension=".txt",
+            filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")],
+            initialfile=f"plagiarism_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+        )
         
+        if not filename:
+            return
 
 
 def main():
