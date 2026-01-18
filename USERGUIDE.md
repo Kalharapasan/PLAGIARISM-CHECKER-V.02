@@ -1,12 +1,13 @@
-# 🖥️ Plagiarism Checker - Desktop Application
+# 🖥️ Plagiarism Checker - Desktop Application User Guide
 
-## Professional PC Application for Plagiarism Detection
+## Professional PC Application for Academic Integrity
 
-A full-featured desktop application with a modern graphical interface for detecting plagiarism in documents. Similar to Turnitin, built as a native PC application.
+A complete desktop application with modern GUI for plagiarism detection, similar to Turnitin. Works on Windows, macOS, and Linux.
 
-![Application Type: Desktop GUI](https://img.shields.io/badge/Type-Desktop%20GUI-blue)
-![Platform: Windows/Mac/Linux](https://img.shields.io/badge/Platform-Cross--Platform-green)
-![Language: Python](https://img.shields.io/badge/Language-Python-yellow)
+![Version](https://img.shields.io/badge/version-1.0-blue)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-green)
+![Python](https://img.shields.io/badge/python-3.7%2B-yellow)
+![License](https://img.shields.io/badge/license-Educational-orange)
 
 ---
 
@@ -107,23 +108,28 @@ Tkinter is usually included with Python
 **Windows:**
 Tkinter is usually included with Python
 
-### Step 3: Install Optional Dependencies
+### Step 3: Install Dependencies
 
-Run the setup script:
+Run the installer (recommended):
 
 **Windows:**
 ```cmd
-python setup.py
+python installer.py
 ```
 
 **macOS/Linux:**
 ```bash
-python3 setup.py
+python3 installer.py
 ```
 
-Or manually install:
+Or manually install dependencies:
 ```bash
-pip install python-docx pypdf pdfplumber --break-system-packages
+pip install -r requirements.txt
+```
+
+Or install individually:
+```bash
+pip install python-docx pypdf pdfplumber
 ```
 
 ---
@@ -138,8 +144,9 @@ pip install python-docx pypdf pdfplumber --break-system-packages
 
 **macOS/Linux:**
 1. Open terminal in the application folder
-2. Run: `./run.sh`
-3. Or double-click the file if executable permissions are set
+2. Run: `chmod +x run.sh` (first time only)
+3. Run: `./run.sh`
+4. Or double-click the file if executable permissions are set
 
 ### Option 2: Direct Python Execution
 
@@ -159,18 +166,20 @@ python3 main.py
 
 ### Main Interface
 
-The application has two main panels:
+The application has a clean, two-panel layout:
 
 **Left Panel - Document Input:**
-- File upload area
-- Text paste area
-- Check button
+- File upload button ("Choose File")
+- Clear button to reset
+- Large text area for pasting content
+- "Check for Plagiarism" button
 
-**Right Panel - Results:**
-- Similarity score (large percentage)
-- Statistics (words, sources, unique content)
-- Detailed match list
-- Export button
+**Right Panel - Results Display:**
+- Large similarity percentage with color coding
+- Statistics grid (Total Words, Sources Found, Unique Content)
+- Detailed matches with source information
+- "Export Report" button
+- Status bar at bottom
 
 ### Step-by-Step Usage
 
@@ -285,6 +294,12 @@ The application has two main panels:
 
 #### 1. Application Won't Start
 
+**First, try the installer:**
+```bash
+python installer.py
+```
+This will check and fix most common issues.
+
 **Problem:** "No module named 'tkinter'"
 ```bash
 # Ubuntu/Debian
@@ -297,20 +312,23 @@ sudo dnf install python3-tkinter
 **Problem:** "Python not found"
 - Install Python from [python.org](https://www.python.org/)
 - Make sure Python is in system PATH
+- On Windows, check "Add Python to PATH" during installation
 
 #### 2. Cannot Read DOCX Files
 
 **Solution:**
 ```bash
-pip install python-docx --break-system-packages
+pip install python-docx
 ```
+Or run the installer again: `python installer.py`
 
 #### 3. Cannot Read PDF Files
 
 **Solution:**
 ```bash
-pip install pypdf pdfplumber --break-system-packages
+pip install pypdf pdfplumber
 ```
+Or run the installer again: `python installer.py`
 
 #### 4. Application Crashes on File Upload
 
@@ -419,14 +437,28 @@ A: This is a local tool for initial checking. Institutional tools like Turnitin 
 
 ## 🔄 Updates and Support
 
+### One-Click Setup
+For the easiest experience, use the installer:
+```bash
+python installer.py
+```
+This automatically:
+- Checks Python installation
+- Installs required dependencies
+- Creates desktop shortcuts (optional)
+- Verifies everything works
+
 ### Getting Updates
-Check for new versions by reviewing the source code repository.
+- Check the project folder for newer versions
+- Re-run `installer.py` to update dependencies
+- Review README.md for changes
 
 ### Reporting Issues
 If you encounter bugs or have suggestions:
 1. Document the issue clearly
 2. Include error messages
 3. Note your system details (OS, Python version)
+4. Try running `installer.py` to fix dependency issues
 
 ### Contributing
 Feel free to improve the code:
@@ -460,6 +492,15 @@ Built with:
 - `Ctrl+E` - Export report (if implemented)
 - `Ctrl+Q` - Quit application (if implemented)
 
+### Project Files
+- `main.py` - Main application
+- `installer.py` - One-click installer  
+- `run.bat` - Windows launcher
+- `run.sh` - Linux/macOS launcher
+- `requirements.txt` - Dependencies
+- `README.md` - Project overview
+- `USERGUIDE.md` - This guide
+
 ### File Formats
 - `.txt` - Always supported
 - `.docx` - Requires python-docx
@@ -474,6 +515,7 @@ Built with:
 - Read this guide first
 - Check troubleshooting section
 - Review FAQ
+- Check README.md for latest info
 
 ---
 
