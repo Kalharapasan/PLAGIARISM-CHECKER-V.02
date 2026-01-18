@@ -287,6 +287,12 @@ class PlagiarismCheckerApp:
         self.results_text.tag_config('header', font=('Arial', 10, 'bold'), foreground='#2d3748')
         self.results_text.tag_config('source', font=('Arial', 9, 'bold'), foreground='#667eea')
         self.results_text.tag_config('match', background='#fef5e7', foreground='#c53030')
+        self.export_button = tk.Button(right_frame, text="💾 Export Report", 
+                                      bg='#667eea', fg='white', font=('Arial', 10, 'bold'),
+                                      command=self.export_report, cursor='hand2', relief='flat',
+                                      state='disabled', activebackground='#5a67d8',
+                                      activeforeground='white')
+        self.export_button.pack(fill='x', padx=15, pady=(0, 15))
         
         
     
