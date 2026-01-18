@@ -79,3 +79,12 @@ def install_dependencies():
     
     print()
     return installed, failed
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\n\nInstallation cancelled by user.")
+    except Exception as e:
+        print(f"\n\nError during installation: {e}")
+        input("\nPress Enter to exit...")
