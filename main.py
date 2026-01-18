@@ -347,6 +347,8 @@ class PlagiarismCheckerApp:
     
     def perform_check(self):
         try:
+            results = self.engine.check_plagiarism(self.current_text, self.database)
+            self.results = results
         
         except Exception as e:
             self.root.after(0, lambda: messagebox.showerror("Error", f"Analysis failed: {str(e)}"))
