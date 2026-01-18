@@ -13,3 +13,15 @@ import threading
 from datetime import datetime
 
 class PlagiarismEngine:
+    def __init__(self):
+        self.min_match_length = 5
+        self.stop_words = {
+            'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for',
+            'of', 'with', 'by', 'from', 'as', 'is', 'was', 'are', 'were', 'be',
+            'been', 'being', 'have', 'has', 'had', 'do', 'does', 'did', 'will',
+            'would', 'could', 'should', 'may', 'might', 'can', 'this', 'that',
+            'these', 'those', 'i', 'you', 'he', 'she', 'it', 'we', 'they', 'what',
+            'which', 'who', 'when', 'where', 'why', 'how', 'all', 'each', 'every',
+            'some', 'any', 'no', 'not', 'only', 'own', 'same', 'so', 'than', 'too',
+            'very', 's', 't', 'just', 'now'
+        }
