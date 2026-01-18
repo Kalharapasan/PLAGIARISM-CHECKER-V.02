@@ -389,6 +389,31 @@ class PlagiarismCheckerApp:
                     bg='white', fg='#667eea').pack(pady=(10, 0))
             tk.Label(stat_box, text=label, font=('Arial', 8),
                     bg='white', fg='#718096').pack(pady=(0, 10))
+        
+        self.results_text.config(state='normal')
+        self.results_text.delete(1.0, tk.END)
+        
+        if self.results['matches']:
+            for idx, match in enumerate(self.results['matches'], 1):
+                self.results_text.insert(tk.END, f"\n━━ Match #{idx} ━━\n", 'header')
+                self.results_text.insert(tk.END, f"Source: {match['source']}\n", 'source')
+                if match['url']:
+                    self.results_text.insert(tk.END, f"URL: {match['url']}\n")
+                self.results_text.insert(tk.END, f"Similarity: {match['similarity']}%\n\n")
+                
+                if match['matched_sequences']:
+                    self.results_text.insert(tk.END, "Matched Sequences:\n")
+                    for seq in match['matched_sequences'][:3]:
+                        text = seq['text'][:100] + '...' if len(seq['text']) > 100 else seq['text']
+                        self.results_text.insert(tk.END, f"• ", 'match')
+                        self.results_text.insert(tk.END, f"\"{text}\" ({seq['length']} words)\n", 'match')
+                
+                self.results_text.insert(tk.END, "\n")
+        else:
+            self.results_text.insert(tk.END, "\n✓ No significant matches found.\n\n")
+            self.results_text.insert(tk.END, "The document appears to be largely original content.\n")
+        
+        self.results_text.config(state='disabled')
 
 
 def main():
