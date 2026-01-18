@@ -135,8 +135,50 @@ Categories=Education;Office;
     
     return False
 
-
-
+def main():
+    """Main installation function"""
+    print_header()
+    if not check_python():
+        print("\n⚠ Installation cannot continue.")
+        input("Press Enter to exit...")
+        return
+    if not check_tkinter():
+        print("\n⚠ Installation cannot continue.")
+        input("Press Enter to exit...")
+        return
+    installed, failed = install_dependencies()
+    create_desktop_shortcut()
+    print()
+    print("=" * 70)
+    print("INSTALLATION COMPLETE")
+    print("=" * 70)
+    
+    if installed:
+        print("✓ Successfully installed packages:")
+        for package in installed:
+            print(f"  - {package}")
+    
+    if failed:
+        print("⚠ Failed to install packages:")
+        for package in failed:
+            print(f"  - {package}")
+        print("  Note: The application will work with limited file format support")
+    
+    print()
+    print("You can now run the Plagiarism Checker:")
+    system = platform.system()
+    if system == "Windows":
+        print("  • Double-click the desktop shortcut")
+        print("  • Or run: run.bat")
+    elif system == "Linux":
+        print("  • Double-click the desktop shortcut")
+        print("  • Or run: ./run.sh")
+    elif system == "Darwin":
+        print("  • Run: ./run.sh")
+    
+    print(f"  • Or run: python {os.path.join(os.path.dirname(__file__), 'main.py')}")
+    print()
+    input("Press Enter to exit...")
 
 if __name__ == "__main__":
     try:
