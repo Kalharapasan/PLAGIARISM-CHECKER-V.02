@@ -91,7 +91,7 @@ def create_desktop_shortcut():
             
             desktop = winshell.desktop()
             path = os.path.join(desktop, "Plagiarism Checker.lnk")
-            target = os.path.join(script_dir, "run_plagiarism_checker.bat")
+            target = os.path.join(script_dir, "run.bat")
             
             shell = Dispatch('WScript.Shell')
             shortcut = shell.CreateShortCut(path)
@@ -106,6 +106,34 @@ def create_desktop_shortcut():
             print("⚠ Could not create desktop shortcut")
             print("  You can manually create a shortcut to run_plagiarism_checker.bat")
             return False
+    elif system == "Linux":
+        try:
+            desktop_file = f"""[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Plagiarism Checker
+Comment=Academic Integrity Tool
+Exec={sys.executable} {os.path.join(script_dir, 'main.py')}
+Path={script_dir}
+Terminal=false
+Categories=Education;Office;
+"""
+            desktop_path = os.path.expanduser("~/Desktop/plagiarism-checker.desktop")
+            with open(desktop_path, 'w') as f:
+                f.write(desktop_file)
+            os.chmod(desktop_path, 0o755)
+            print("✓ Desktop shortcut created")
+            return True
+        except:
+            print("⚠ Could not create desktop shortcut")
+            return False
+    
+    elif system == "Darwin":
+        print("⚠ Automatic shortcut creation not available on macOS")
+        print("  Run: ./run.sh")
+        return False
+    
+    return False
 
 
 if __name__ == "__main__":
