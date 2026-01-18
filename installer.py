@@ -23,3 +23,27 @@ def check_python():
     
     print(f"✓ Python {version.major}.{version.minor}.{version.micro} detected")
     return True
+
+def check_tkinter():
+    print("Checking Tkinter (GUI library)...")
+    try:
+        import tkinter
+        print("✓ Tkinter is available")
+        return True
+    except ImportError:
+        print("✗ Tkinter is not installed")
+        print()
+        
+        system = platform.system()
+        if system == "Linux":
+            print("Install with:")
+            print("  Ubuntu/Debian: sudo apt-get install python3-tk")
+            print("  Fedora: sudo dnf install python3-tkinter")
+        elif system == "Darwin":
+            print("Tkinter should be included with Python on macOS")
+            print("Try reinstalling Python from python.org")
+        elif system == "Windows":
+            print("Tkinter should be included with Python on Windows")
+            print("Try reinstalling Python from python.org")
+        
+        return False
