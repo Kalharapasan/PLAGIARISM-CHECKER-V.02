@@ -228,6 +228,20 @@ class PlagiarismCheckerApp:
         
         ttk.Label(input_header, text="📄 Document Input", 
                  style='Header.TLabel', background='#f7fafc').pack(pady=15, padx=15, anchor='w')
+        upload_frame = tk.Frame(left_frame, bg='white')
+        upload_frame.pack(fill='x', padx=15, pady=15)
+        
+        self.file_label = ttk.Label(upload_frame, text="No file selected", 
+                                    style='Info.TLabel')
+        self.file_label.pack(pady=(0, 10))
+        
+        button_frame = tk.Frame(upload_frame, bg='white')
+        button_frame.pack()
+        
+        ttk.Button(button_frame, text="📁 Choose File", 
+                  command=self.select_file).pack(side='left', padx=5)
+        ttk.Button(button_frame, text="🗑️ Clear", 
+                  command=self.clear_file).pack(side='left', padx=5)
         
     
 
