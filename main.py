@@ -477,7 +477,6 @@ class PlagiarismCheckerApp:
         except Exception as e:
             messagebox.showerror("Error", f"Failed to export report: {str(e)}")
 
-
 def main():
     root = tk.Tk()
     app = PlagiarismCheckerApp(root)
@@ -487,9 +486,7 @@ def main():
     x = (root.winfo_screenwidth() // 2) - (width // 2)
     y = (root.winfo_screenheight() // 2) - (height // 2)
     root.geometry(f'{width}x{height}+{x}+{y}')
-    
     root.mainloop()
-
 
 if __name__ == "__main__":
     main()
