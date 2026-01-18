@@ -47,3 +47,35 @@ def check_tkinter():
             print("Try reinstalling Python from python.org")
         
         return False
+
+def install_dependencies():
+    print()
+    print("Installing optional dependencies...")
+    print("(This enables support for DOCX and PDF files)")
+    print()
+    
+    packages = {
+        'python-docx': 'Microsoft Word (.docx) support',
+        'pypdf': 'PDF support (basic)',
+        'pdfplumber': 'PDF support (advanced, with tables)'
+    }
+    
+    installed = []
+    failed = []
+    
+    for package, description in packages.items():
+        print(f"Installing {package} ({description})...")
+        try:
+            subprocess.check_call(
+                [sys.executable, "-m", "pip", "install", package, "--break-system-packages", "-q"],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL
+            )
+            print(f"  ✓ {package} installed")
+            installed.append(package)
+        except subprocess.CalledProcessError:
+            print(f"  ✗ Failed to install {package}")
+            failed.append(package)
+    
+    print()
+    return installed, failed
