@@ -210,6 +210,14 @@ class PlagiarismCheckerApp:
         style.configure('Primary.TButton', font=('Arial', 11, 'bold'))  
     
     def create_ui(self):
+        header_frame = tk.Frame(self.root, bg='#667eea', height=100)
+        header_frame.pack(fill='x', pady=(0, 10))
+        header_frame.pack_propagate(False)
+        
+        ttk.Label(header_frame, text="🔍 Plagiarism Checker", 
+                 style='Title.TLabel').pack(pady=(15, 5))
+        ttk.Label(header_frame, text="Advanced similarity detection for academic integrity", 
+                 style='Subtitle.TLabel').pack()
     
 
 def main():
