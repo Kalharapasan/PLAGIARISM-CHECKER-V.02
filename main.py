@@ -25,6 +25,17 @@ class PlagiarismEngine:
             'some', 'any', 'no', 'not', 'only', 'own', 'same', 'so', 'than', 'too',
             'very', 's', 't', 'just', 'now'
         }
+    
+    def extract_text(self, filepath: str) -> str:
+        ext = Path(filepath).suffix.lower()
+        if ext == '.txt':
+            return self.extract_text_from_txt(filepath)
+        elif ext == '.docx':
+            return self.extract_text_from_docx(filepath)
+        elif ext == '.pdf':
+            return self.extract_text_from_pdf(filepath)
+        else:
+            raise Exception(f"Unsupported file format: {ext}")
         
     def tokenize(self, text: str) -> List[str]:
         return re.findall(r'\b[a-z0-9]+\b', text.lower())
