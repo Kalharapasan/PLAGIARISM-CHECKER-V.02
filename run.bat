@@ -16,7 +16,7 @@ if errorlevel 1 (
 echo Starting Plagiarism Checker...
 echo.
 
-python plagiarism_checker_gui.py
+python main.py
 
 if errorlevel 1 (
     echo.
