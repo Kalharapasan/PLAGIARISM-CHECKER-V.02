@@ -26,6 +26,28 @@ class PlagiarismEngine:
             'very', 's', 't', 'just', 'now'
         }
     
+    def extract_text_from_pdf(self, filepath: str) -> str:
+        try:
+            import pdfplumber
+            text = []
+            with pdfplumber.open(filepath) as pdf:
+                for page in pdf.pages:
+                    page_text = page.extract_text()
+                    if page_text:
+                        text.append(page_text)
+            return '\n'.join(text)
+        except ImportError:
+            try:
+                from pypdf import PdfReader
+                reader = PdfReader(filepath)
+                text = []
+                for page in reader.pages:
+                    text.append(page.extract_text())
+                return '\n'.join(text)
+            except ImportError:
+                raise Exception("PDF support requires pdfplumber or pypdf. Install with: pip install pdfplumber")
+    
+    
     def extract_text(self, filepath: str) -> str:
         ext = Path(filepath).suffix.lower()
         if ext == '.txt':
