@@ -66,16 +66,27 @@ def install_dependencies():
     for package, description in packages.items():
         print(f"Installing {package} ({description})...")
         try:
+            # Try installing without --break-system-packages first
             subprocess.check_call(
-                [sys.executable, "-m", "pip", "install", package, "--break-system-packages", "-q"],
+                [sys.executable, "-m", "pip", "install", package, "-q"],
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL
             )
             print(f"  ✓ {package} installed")
             installed.append(package)
         except subprocess.CalledProcessError:
-            print(f"  ✗ Failed to install {package}")
-            failed.append(package)
+            try:
+                # If that fails, try with --user flag
+                subprocess.check_call(
+                    [sys.executable, "-m", "pip", "install", package, "--user", "-q"],
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL
+                )
+                print(f"  ✓ {package} installed (user install)")
+                installed.append(package)
+            except subprocess.CalledProcessError:
+                print(f"  ✗ Failed to install {package}")
+                failed.append(package)
     
     print()
     return installed, failed
@@ -102,8 +113,13 @@ def create_desktop_shortcut():
             
             print("✓ Desktop shortcut created")
             return True
-        except:
-            print("⚠ Could not create desktop shortcut")
+        except ImportError:
+            print("⚠ Could not create desktop shortcut (winshell/pywin32 not available)")
+            print("  Install with: pip install winshell pywin32")
+            print("  You can manually create a shortcut to run.bat")
+            return False
+        except Exception as e:
+            print(f"⚠ Could not create desktop shortcut: {e}")
             print("  You can manually create a shortcut to run.bat")
             return False
     elif system == "Linux":
@@ -146,6 +162,17 @@ def main():
         print("\n⚠ Installation cannot continue.")
         input("Press Enter to exit...")
         return
+    
+    print("\nTesting basic functionality...")
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from main import PlagiarismEngine
+        engine = PlagiarismEngine()
+        print("✓ Core functionality test passed")
+    except Exception as e:
+        print(f"⚠ Core functionality test failed: {e}")
+        print("  The application may not work properly")
+    
     installed, failed = install_dependencies()
     create_desktop_shortcut()
     print()
