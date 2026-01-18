@@ -188,6 +188,7 @@ class PlagiarismCheckerApp:
         self.root.title("Plagiarism Checker - Academic Integrity Tool")
         self.root.geometry("1000x700")
         self.root.configure(bg='#f0f0f0')
+        self.setup_styles()
 
 def main():
     root = tk.Tk()
