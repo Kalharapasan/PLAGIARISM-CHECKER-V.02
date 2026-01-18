@@ -275,6 +275,9 @@ class PlagiarismCheckerApp:
                                    style='Info.TLabel', background='white', 
                                    foreground='#718096')
         self.score_desc.pack()
+        self.stats_frame = tk.Frame(right_frame, bg='#f7fafc')
+        self.stats_frame.pack(fill='x', padx=15, pady=10)
+        
         
     
 
