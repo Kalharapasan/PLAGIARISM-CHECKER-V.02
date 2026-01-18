@@ -414,6 +414,11 @@ class PlagiarismCheckerApp:
             self.results_text.insert(tk.END, "The document appears to be largely original content.\n")
         
         self.results_text.config(state='disabled')
+        self.check_button.config(state='normal', text="🔍 Check for Plagiarism")
+        self.export_button.config(state='normal')
+        self.status_bar.config(text=f"Analysis complete - {score}% similarity detected")
+    
+    
 
 
 def main():
