@@ -33,6 +33,10 @@ class PlagiarismEngine:
             return '\n'.join([p.text for p in doc.paragraphs if p.text.strip()])
         except ImportError:
             import zipfile
+            with zipfile.ZipFile(filepath) as docx:
+                xml_content = docx.read('word/document.xml')
+                text = re.sub(r'<[^>]+>', ' ', xml_content.decode('utf-8'))
+                return ' '.join(text.split())
         
     
     def extract_text_from_pdf(self, filepath: str) -> str:
